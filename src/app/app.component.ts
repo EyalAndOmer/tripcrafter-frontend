@@ -13,8 +13,8 @@ export class AppComponent{
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  @HostListener('window:beforeunload', ['$event'])
-  onWindowUnload(event: Event) {
-    this.authService.removeToken();
-  }
+  // @HostListener('window:beforeunload', ['$event'])
+  // onWindowUnload(event: Event) {
+  //   this.authService.removeToken();
+  // }
 }

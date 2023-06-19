@@ -1,0 +1,60 @@
+<mat-toolbar class="bg-dark">
+  <img src="../../assets/logo-white-text.png" alt="Logo" class="logo" >
+
+  <span class="spacer"></span>
+
+  <div *ngIf="authService.userRole !== ''">
+    <button mat-raised-button color="accent" class="add-trip-button">Add Trip</button>
+
+    <button color="primary"mat-fab [matMenuTriggerFor]="menu" *ngIf="!isMobile">
+      <h4 class="mb-0">M</h4>
+    </button>
+  </div>
+
+  <div *ngIf="authService.userRole === '' && !isMobile">
+    <button mat-raised-button class="add-trip-button">Prihlasit sa</button>
+    <button mat-raised-button class="add-trip-button">Zaregistrovat sa</button>
+  </div>
+
+  <button mat-icon-button (click)="toggleDrawer()" class="text-white" *ngIf="isMobile">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+</mat-toolbar>
+
+<mat-drawer-container class="drawer-container">
+  <mat-drawer #drawer mode="over" [opened]="isDrawerOpen">
+    <mat-list role="list">
+      <div *ngIf="authService.userRole === ''">
+        <mat-list-item matRipple style="width: 200px">
+          <span mat-line>Prihlasit sa</span>
+        </mat-list-item>
+
+        <mat-list-item matRipple style="width: 200px">
+          <span mat-line>Registrovat sa</span>
+        </mat-list-item>
+      </div>
+
+      <div *ngIf="authService.userRole !== ''">
+        <mat-list-item matRipple style="width: 200px">
+          <mat-icon mat-list-icon>person</mat-icon>
+          <span mat-line>Profile</span>
+        </mat-list-item>
+        <mat-list-item matRipple>
+          <mat-icon mat-list-icon>settings</mat-icon>
+          <span mat-line>Settings</span>
+        </mat-list-item>
+        <mat-list-item matRipple>
+          <mat-icon mat-list-icon>exit_to_app</mat-icon>
+          <span mat-line>Logout</span>
+        </mat-list-item>
+      </div>
+    </mat-list>
+  </mat-drawer>
+</mat-drawer-container>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item class="profile-option">Profile</button>
+  <button mat-menu-item class="settings-option">Settings</button>
+  <button mat-menu-item class="logout-option">Logout</button>
+</mat-menu>
