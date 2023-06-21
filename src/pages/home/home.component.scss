@@ -1,0 +1,14 @@
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+
+.home-img {
+  width: 10rem;
+  height: auto;
+}
+
+@include media-breakpoint-up(md) {
+  .home-img {
+    width: 15rem;
+  }
+}

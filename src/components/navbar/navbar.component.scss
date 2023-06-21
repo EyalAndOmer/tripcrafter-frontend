@@ -5,6 +5,7 @@
 .mat-drawer {
   height: 100%;
   position: absolute;
+  z-index: 2000;
 }
 
 .mat-toolbar-row, .mat-toolbar-single-row {

@@ -4,7 +4,7 @@
 
     <mat-card style="display: block; padding: 20px; max-width: 1200px;">
       <div class="row">
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-6 d-flex align-items-center">
           <img src="../../assets/login-ilustration.png" alt="login ilustration" class="img-fluid" >
         </div>
 
@@ -54,24 +54,17 @@
               </div>
 
               <div class="col-12 mb-2">
-                <mat-checkbox (change)="changeKeepLoggedIn()" color="primary">Zostat prihlaseny</mat-checkbox>
-              </div>
-
-              <div class="col-12 mb-2">
                 <p style="cursor: pointer" class="link-primary" (click)="redirectToRegister()">Nemate vytvoreny ucet? Zaregistrujte sa</p>
               </div>
             </div>
 
             <div class="d-grid gap-2">
               <button class="" mat-raised-button color="primary">Prihlasit sa</button>
-              <button type="button" mat-raised-button color="primary">
-                <mat-icon fontIcon="Google" ></mat-icon>
-                Login with Google
-              </button>
             </div>
           </form>
         </div>
       </div>
     </mat-card>
   </div>
+  <app-footer/>
 </div>

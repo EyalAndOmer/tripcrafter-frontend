@@ -67,7 +67,10 @@ export class LoginComponent {
           password: password
         };
 
-        await this.auth.loginUser(this._keepLoggedIn, payload);
+        await this.auth.loginUser(this._keepLoggedIn, payload).catch(err => {
+          this.errorMessage = err.error.message;
+          this.isError = true;
+        });
         await this.router.navigate(['/home']);
       }
     }

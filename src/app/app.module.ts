@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,6 +27,13 @@ import { NotfoundComponent } from '../pages/notfound/notfound.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { MapComponent } from '../components/map/map.component';
+import { MapSearchComponent } from '../components/map-search/map-search.component';
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { AddAttractionComponent } from '../pages/add-attraction/add-attraction.component';
+import { FooterComponent } from '../components/footer/footer.component';
+import { AddTripComponent } from '../pages/add-trip/add-trip.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +44,12 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     ContainerComponent,
     DashboardComponent,
     HomeComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    MapComponent,
+    MapSearchComponent,
+    AddAttractionComponent,
+    FooterComponent,
+    AddTripComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +71,10 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     FormsModule,
     NgbModule,
     ReactiveFormsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    LeafletModule,
+    MatAutocompleteModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

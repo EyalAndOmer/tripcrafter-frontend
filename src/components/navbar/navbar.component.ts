@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatDrawer } from '@angular/material/sidenav';
 import {AuthService} from "../../services/authservice/authservice.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +15,7 @@ export class NavbarComponent implements OnInit {
   isMobile = false;
   isDrawerOpen = false;
 
-  constructor(private breakpointObserver: BreakpointObserver, public authService: AuthService) {}
+  constructor(private breakpointObserver: BreakpointObserver, public authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.breakpointObserver.observe(Breakpoints.Handset).subscribe(result => {
@@ -42,5 +43,15 @@ export class NavbarComponent implements OnInit {
   closeDrawer() {
     this.drawer.close();
     this.isDrawerOpen = false;
+  }
+
+  logOut() {
+    this.authService.removeToken();
+    this.authService.userRole = '';
+    this.router.navigate(['login']);
+  }
+
+  addTripRedirect() {
+    this.router.navigate(['add_trip'])
   }
 }

@@ -4,7 +4,7 @@
   <span class="spacer"></span>
 
   <div *ngIf="authService.userRole !== ''">
-    <button mat-raised-button color="accent" class="add-trip-button">Add Trip</button>
+    <button mat-raised-button color="accent" class="add-trip-button" (click)="addTripRedirect()">Pridat vylet</button>
 
     <button color="primary"mat-fab [matMenuTriggerFor]="menu" *ngIf="!isMobile">
       <h4 class="mb-0">M</h4>
@@ -38,15 +38,15 @@
       <div *ngIf="authService.userRole !== ''">
         <mat-list-item matRipple style="width: 200px">
           <mat-icon mat-list-icon>person</mat-icon>
-          <span mat-line>Profile</span>
+          <span mat-line>Profil</span>
         </mat-list-item>
         <mat-list-item matRipple>
           <mat-icon mat-list-icon>settings</mat-icon>
-          <span mat-line>Settings</span>
+          <span mat-line>Nastavenia</span>
         </mat-list-item>
-        <mat-list-item matRipple>
+        <mat-list-item matRipple (click)="logOut()">
           <mat-icon mat-list-icon>exit_to_app</mat-icon>
-          <span mat-line>Logout</span>
+          <span mat-line>Odhlasit sa</span>
         </mat-list-item>
       </div>
     </mat-list>
@@ -54,7 +54,7 @@
 </mat-drawer-container>
 
 <mat-menu #menu="matMenu">
-  <button mat-menu-item class="profile-option">Profile</button>
-  <button mat-menu-item class="settings-option">Settings</button>
-  <button mat-menu-item class="logout-option">Logout</button>
+  <button mat-menu-item class="profile-option">Profil</button>
+  <button mat-menu-item class="settings-option">Nastavenia</button>
+  <button mat-menu-item class="logout-option" (click)="logOut()">Odhlasit sa</button>
 </mat-menu>

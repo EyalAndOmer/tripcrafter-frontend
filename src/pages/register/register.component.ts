@@ -41,7 +41,6 @@ export class RegisterComponent {
   }
 
   register() {
-    console.log(this.registerForm.get('password'))
     if (this.registerForm.valid) {
       const url = 'http://localhost:8080/api/auth/signup';
       const email = this.registerForm.get('email')?.value;
@@ -50,7 +49,8 @@ export class RegisterComponent {
       if (email && password) {
         const payload = {
           username: email,
-          password: password
+          password: password,
+          role: 'user'
         };
 
         this.http.post(url, payload).subscribe(

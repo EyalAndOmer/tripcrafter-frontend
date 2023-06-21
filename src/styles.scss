@@ -1,4 +1,5 @@
 @use '@angular/material' as mat;
+@import "leaflet/dist/leaflet.css";
 
 html, body { height: 100%; }
 
@@ -33,8 +34,13 @@ $body-bg: mat.get-color-from-palette(mat.$grey-palette, 50);
   color: #155724;
 }
 
+/* Fix for material angular form field error field */
+.hide-error-field {
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none !important;
+  }
 
-
+}
 
 
 
