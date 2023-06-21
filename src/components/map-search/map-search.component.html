@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <mat-form-field appearance="outline" class="text-field hide-error-field">
+    <mat-label>Zadajte mesto</mat-label>
+    <input matInput [formControl]="searchControl"[matAutocomplete]="auto">
+    <mat-error>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngIf="isLoading" class="is-loading"><mat-spinner diameter="50"></mat-spinner></mat-option>
+    <ng-container *ngIf="!isLoading">
+      <mat-option *ngFor="let result of filteredResults" [value]="result.placeName" (click)="onResultSelect(result)">
+        {{ result.placeName }}
+      </mat-option>
+    </ng-container>
+  </mat-autocomplete>
+
+  <div *ngIf="showOptions" class="tourist-attractions">
+    <button class="btn btn-primary" (click)="loadTouristAttractions()">Show tourist attractions</button>
+    <button class="btn btn-primary" (click)="loadRestaurants()">Show restaurants</button>
+    <button class="btn btn-primary" (click)="loadHotels()">Show hotels</button>
+    <button class="btn btn-primary" (click)="loadFunPlaces()">Show amusement</button>
+  </div>
+
+</div>
+

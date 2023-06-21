@@ -1,0 +1,33 @@
+<div class="map-container">
+
+  <div class="map img-fluid" leaflet
+       [leafletOptions]="options"
+       (leafletMapReady)="onMapReady($event)"
+       (leafletMapZoomEnd)="onMapZoomEnd($event)">
+  </div>
+
+    <div class="overlay">
+      <app-map-search (selectedCity)="onCoordinatesSelected($event)"
+                      (pointsOfInterests)="onAttractionsSelect($event.elements)"
+      />
+
+      <div #collapse="ngbCollapse" [(ngbCollapse)]="!showWindow" [ngClass]="{'selectedPoints': showWindow}" class="container-fluid">
+        <mat-form-field style="width: 100%" appearance="outline">
+          <mat-label>Zadajte nazov miesta</mat-label>
+          <input type="text"
+                 matInput
+                 [formControl]="myControl">
+        </mat-form-field>
+
+        <mat-list role="list">
+          <ng-container *ngIf="myControl.value && myControl.value.length >= 3">
+            <mat-list-item matRipple (click)="zoomToSelected(result)" *ngFor="let result of filteredData" style="cursor: pointer">
+              <span mat-line>{{ result.tags?.name }}</span>
+            </mat-list-item>
+          </ng-container>
+        </mat-list>
+      </div>
+
+
+    </div>
+</div>

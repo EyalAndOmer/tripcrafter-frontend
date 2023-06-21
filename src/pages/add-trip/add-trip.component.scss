@@ -1,0 +1,13 @@
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+
+.tripForm {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+@include media-breakpoint-down(md) {
+  .tripForm {
+    overflow-x: scroll;
+  }
+}

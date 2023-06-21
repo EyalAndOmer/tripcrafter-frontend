@@ -1,0 +1,68 @@
+<div style="height: 100vh; display: flex; flex-direction: column;">
+  <app-navbar/>
+  <div class="d-flex flex-grow-1 d-flex" style="position: relative">
+    <div class="container-xl my-2 tripForm" >
+      <form [formGroup]="tripForm" (ngSubmit)="createTrip()" style="  min-width: 800px;">
+        <div class="row">
+          <div class="col-12 col-md-8">
+            <h2>Vytvorit vylet</h2>
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Nazov vyletu</mat-label>
+              <input matInput formControlName="name">
+              <mat-error *ngIf="tripForm.get('name')?.hasError('required') && !tripForm.get('name')?.valid">
+                Zadajte meno vyletu
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-12 col-md-9">
+            <h3>Miesta vyletu</h3>
+            <div formArrayName="places">
+              <div *ngFor="let place of places.controls; let i = index" [formGroupName]="i" class="d-flex gap-2">
+                <mat-form-field appearance="outline">
+                  <mat-label>Nazov miesta</mat-label>
+                  <input matInput formControlName="name">
+                  <mat-error *ngIf="place.get('name')?.hasError('required')">
+                    Zadajte nazov miesta
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Nazov mesta</mat-label>
+                  <input matInput formControlName="city">
+                  <mat-error *ngIf="place.get('city')?.hasError('required')">
+                    Zadajte nazov mesta
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Popis miesta</mat-label>
+                  <input matInput formControlName="description">
+                </mat-form-field>
+
+                <button mat-icon-button (click)="deletePlace(i)" class="text-danger d-flex justify-content-center align-items-center">
+                  <mat-icon>delete</mat-icon>
+                </button>
+
+                <button mat-raised-button color="accent" (click)="navigateToMap()" style="white-space: nowrap">
+                  Vyhladat na mape
+                </button>
+              </div>
+            </div>
+            <button style="width: 100%" mat-raised-button color="accent" (click)="addPlace()">Pridat miesto</button>
+          </div>
+
+          <div class="col-12 d-flex gap-2 my-2">
+            <button mat-raised-button color="warn">Zrusit vylet</button>
+            <button mat-raised-button color="primary" type="submit">Vytvorit vylet</button>
+          </div>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+  <app-footer/>
+</div>
+
+
